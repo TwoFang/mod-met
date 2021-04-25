@@ -3,7 +3,7 @@
 
 # 安装
  ```
- npm install --save
+ npm install --save mod-met
  ```
   
 # 使用
