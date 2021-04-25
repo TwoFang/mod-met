@@ -46,4 +46,6 @@ export default {
 </script>
 
 ```
+
+## 同时发布到两个地址
   
