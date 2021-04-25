@@ -1,0 +1,12 @@
+{
+  "name": "mod-met",
+  "version": "1.0.0",
+  "description": "用于vue2函数模块的解决方案",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "twofang",
+  "license": "ISC",
+  "devDependencies": {}
+}
