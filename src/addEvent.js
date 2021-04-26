@@ -6,13 +6,11 @@ function event(V,mo){
   Vue = V
   if(isObject(mo)){
     moduleMethods = mo
-    return Event
+    return {Event,ADD}
   }else{
     return ADD
   }
-
-} 
-
+}
 function Event(pub, ...register) {
 /**
  * pub <boolean || Object || Array>

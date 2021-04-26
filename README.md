@@ -13,6 +13,7 @@ import Vue from 'vue'
 import modMet from 'mod-met'
 
 Vue.use(modMet)
+
 ```
 
 ``` js
@@ -38,7 +39,7 @@ export default{
 import met from './methods'
 export default {
   created(){
-    this.$event(met)
+    this.$met(met)
   },
   methods:{
   }
