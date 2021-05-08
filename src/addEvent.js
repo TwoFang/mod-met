@@ -207,8 +207,5 @@ function ransack(modules, params) {
 function isObject(obj){
   return Object.prototype.toString.call(obj) === '[object Object]'
 }
-function isArray(obj){
-  return Object.prototype.toString.call(obj) === '[object Array]'
-}
 
 module.exports = event
