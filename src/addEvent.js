@@ -129,26 +129,12 @@ function ADD(...register){
               registry[k] = item.implement[k].bind(this)
               implement.push(k)
             } else {
-              if ( isObject(item.implement[k])) {
-                // 如果是对象，这转换成响应式后放入当前vue实例
-                registry[k] = Vue.observable(item.implement[k])
-              } else if(isArray(item.implement[k])){
-                registry[k] = [...item.implement[k]] 
-              }else{
-                registry[k] = item.implement[k]
-              }
+              // 数据类型使用量收集统一处理
+              VolumeCollection[key] = item[key]
             }
           }
         } else {
-          if ( isObject(item[key])) {
-            // 如果是对象，这转换成响应式后放入当前vue实例
-            registry[key] = Vue.observable(item[key])
-          } else if(isArray(item[key])){
-            registry[key] = [...item[key]] 
-          }else{
-            // registry[key] = item[key]
-            VolumeCollection[key] = item[key]
-          }
+          VolumeCollection[key] = item[key]
         }
       }
     } catch (err) {
