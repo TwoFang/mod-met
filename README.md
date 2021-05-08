@@ -54,7 +54,7 @@ export default {
 import Vue from 'vue'
 import modMet from 'mod-met'
 import mod from './mod.js'
-// 传入第二个尝试启用mod,传入装载函数对象
+// 传入第二个参数启用mod,传入装载函数对象
 Vue.use(modMet,mod)
 
 ```
