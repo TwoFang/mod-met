@@ -111,6 +111,7 @@ function Event(pub, ...register) {
 function ADD(...register){
   const registry = {}
   const implement = []
+  const VolumeCollection = {}
   register.forEach((item, i) => {
     // 收到数组或者非对象,抛出错误
     if (typeof item !== 'object' || Array.isArray(item)) {
@@ -145,7 +146,8 @@ function ADD(...register){
           } else if(isArray(item[key])){
             registry[key] = [...item[key]] 
           }else{
-            registry[key] = item[key]
+            // registry[key] = item[key]
+            VolumeCollection[key] = item[key]
           }
         }
       }
@@ -155,6 +157,19 @@ function ADD(...register){
   })
   // 把处理完的对象添加到到this中
   Object.assign(this, registry)
+  // 创建数据储存库并建立映射关系
+  this.__metData = Vue.observable(VolumeCollection)
+  for (const key in VolumeCollection) {
+    Object.defineProperty(this,key,{
+      get:function(){
+        return this.__metData[key]
+      },
+      set:function(x){
+        this.__metData[key] = x
+      }
+    })
+  }
+
   implement.map(it => { this[it]() })
 }
 
