@@ -130,13 +130,13 @@ function ADD(...register){
               implement.push(k)
             } else {
               
-              registry[k] = item[key]
+              registry[k] = item.implement[k]
               // 数据类型使用量收集统一处理
-              VolumeCollection[key] = item[key]
+              VolumeCollection[k] = item.implement[k]
             }
           }
         } else {
-          registry[k] = item[key]
+          registry[key] = item[key]
           VolumeCollection[key] = item[key]
         }
       }
