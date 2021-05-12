@@ -129,11 +129,14 @@ function ADD(...register){
               registry[k] = item.implement[k].bind(this)
               implement.push(k)
             } else {
+              
+              registry[k] = item[key]
               // 数据类型使用量收集统一处理
               VolumeCollection[key] = item[key]
             }
           }
         } else {
+          registry[k] = item[key]
           VolumeCollection[key] = item[key]
         }
       }
