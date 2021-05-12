@@ -147,7 +147,12 @@ function ADD(...register){
   // 把处理完的对象添加到到this中
   Object.assign(this, registry)
   // 创建数据储存库并建立映射关系
-  this.__metData = Vue.observable(VolumeCollection)
+  const _metData = Vue.observable(VolumeCollection)
+  Object.defineProperty(this,'_metData',{
+    // 把_metData设置为只读
+    writable:false,
+    value:_metData
+  })
   for (const key in VolumeCollection) {
     Object.defineProperty(this,key,{
       get:function(){
