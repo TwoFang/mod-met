@@ -5,13 +5,17 @@ const addevent = {
   install(Vue,methods){
     if(methods){
       const { Event,ADD} = event(Vue,methods)
-      Vue.prototype.$modMet = Event
-      Vue.prototype.$met = ADD
+      Object.defineProperty(Vue.prototype,'$modMet',{
+        value:Event
+      })
+      Object.defineProperty(Vue.prototype,'$met',{
+        value:ADD
+      })
     }else{
-      Vue.prototype.$met = event(Vue)
+      Object.defineProperty(Vue.prototype,'$met',{
+        value:ADD
+      })
     }
-    
   }
 }
-
 module.exports = addevent
