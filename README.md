@@ -144,6 +144,7 @@ export default {
         public:true, //启用modules1路径下的public
         mod1:{}, //引入 mod1 方法,路径为 modules1
         mod3:{ //引入 mod3 方法,路径为 modules2
+          name:'func',// 重命名为'func'
           path:'modules2' // 私有路径优先
         }
       },{
