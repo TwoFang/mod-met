@@ -205,7 +205,6 @@ function fill(params, name, func,path) {
     if (typeof params === 'undefined') this[name] = func.bind(this)
     else if (Array.isArray(params)) this[name] = func.bind(this, ...params)
     else this[name] = func.bind(this, params)
-
     return {}
 
   } else if (typeof func === 'object') {
