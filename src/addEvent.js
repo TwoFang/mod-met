@@ -8,7 +8,7 @@ function event(V,mo){
     moduleMethods = mo
     return {Event,ADD}
   }else{
-    return ADD
+    return {ADD}
   }
 }
 function Event(pub, ...register) {
@@ -127,11 +127,12 @@ function ADD(...register){
     try {
       for (const key in item) {
         if (key !== 'implement' && typeof item[key] === 'function') {
+          if(registry[key]!== undefined || this[key] !== undefined) console.warn(`${key}重复定义执行覆盖操作,请避免使用相同的名称`);
           registry[key] = item[key].bind(this)
         } else if (key === 'implement') {
           // 如果有implement 则遍历
           for (const k in item.implement) {
-            if(registry[k] !== undefined){
+            if(registry[k] !== undefined || this[k] !== undefined){
               console.warn(`${k}重复定义执行覆盖操作,请避免使用相同的名称`);
             }
             if (typeof item.implement[k] === 'function') {
@@ -139,14 +140,14 @@ function ADD(...register){
               registry[k] = item.implement[k].bind(this)
               implement.push(k)
             } else {
-              if(registry[k]!== undefined) console.warn(`${k}重复定义执行覆盖操作,请避免使用相同的名称`);
+              if(registry[k]!== undefined || this[k] !== undefined) console.warn(`${k}重复定义执行覆盖操作,请避免使用相同的名称`);
               registry[k] = item.implement[k]
               // 数据类型使用量收集统一处理
               VolumeCollection[k] = item.implement[k]
             }
           }
         } else {
-          if(registry[key]!== undefined) console.warn(`${key}重复定义执行覆盖操作,请避免使用相同的名称`);
+          if(registry[key]!== undefined || this[key] !== undefined) console.warn(`${key}重复定义执行覆盖操作,请避免使用相同的名称`);
           registry[key] = item[key]
           VolumeCollection[key] = item[key]
         }
