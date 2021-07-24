@@ -117,7 +117,7 @@ function Event(pub, ...register) {
 function ADD(...register){
   const registry = {}
   const implement = []
-  const VolumeCollection = {}
+  let VolumeCollection = {}
   register.forEach((item, i) => {
     
     // 收到数组或者非对象,抛出错误
@@ -159,6 +159,11 @@ function ADD(...register){
   // 把处理完的对象添加到到this中
   Object.assign(this, registry)
   // 创建数据储存库并建立映射关系
+  try{
+    VolumeCollection = JSON.parse(JSON.stringify(VolumeCollection))
+  }catch(err){
+    console.warn(err)
+  }
   const _metData = Vue.observable(VolumeCollection)
   Object.defineProperty(this,'_metData',{
     // 把_metData设置为只读
