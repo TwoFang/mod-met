@@ -129,6 +129,12 @@ function ADD(...register){
         if (key !== 'implement' && typeof item[key] === 'function') {
           if(registry[key]!== undefined || this[key] !== undefined) console.warn(`${key}重复定义执行覆盖操作,请避免使用相同的名称`);
           registry[key] = item[key].bind(this)
+        } else if(key === 'static'){
+          for (const K in item.static) {
+            if(registry[K]!== undefined || this[K] !== undefined) console.warn(`${K}重复定义执行覆盖操作,请避免使用相同的名称`);
+            registry[K] = item.static[K]
+          }
+          
         } else if (key === 'implement') {
           // 如果有implement 则遍历
           for (const k in item.implement) {

@@ -1,6 +1,6 @@
 {
   "name": "mod-met",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "用于vue2函数模块的解决方案",
   "main": "index.js",
   "scripts": {
